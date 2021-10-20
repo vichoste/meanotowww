@@ -1,32 +1,15 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <br/>
+    <a>{{miProp}}</a>
+    <br/>
+    <p>{{doble}}</p>
+
+    <!--con la linea de abajos e puede llmar una funcion al cliquear un componente del html, pos se mamo esto XDXDX-->
+    <p v-on:click="miClick">{{numero}}</p>
+    <button @click="numero++">+1</button>
+    <button @click="numero--">-1</button>
   </div>
 </template>
 
@@ -34,7 +17,31 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
+  },
+  methods: {
+    miClick: function () {
+      return this.numero = 100
+    }
+  },
+  data() {
+    return {
+      miProp: ":D",
+      numero: 0
+    }
+  },
+  computed: {
+    doble: function () {
+      return this.numero * 5
+    }
+  },
+  watch: {
+    numero: function (newNumero, oldNumero)
+    {
+      console.log("newNumero: "+newNumero+" oldNumero:"+oldNumero)
+
+     // alert("cambio el valor de "+oldNumero+" a "+newNumero)
+    }
   }
 }
 </script>
