@@ -4,12 +4,16 @@
     <br/>
     <a>{{miProp}}</a>
     <br/>
-    <p>{{doble}}</p>
+    <p v-if="mostrar">{{doble}}</p>
+    <p v-else> esta en 0 ._.</p>
 
     <!--con la linea de abajos e puede llmar una funcion al cliquear un componente del html, pos se mamo esto XDXDX-->
     <p v-on:click="miClick">{{numero}}</p>
     <button @click="numero++">+1</button>
     <button @click="numero--">-1</button>
+    <p>
+      <button @click="numero=0">resetear a 0</button>
+    </p>
   </div>
 </template>
 
@@ -21,13 +25,14 @@ export default {
   },
   methods: {
     miClick: function () {
-      return this.numero = 100
+      return this.numero += 100
     }
   },
   data() {
     return {
       miProp: ":D",
-      numero: 0
+      numero: 0,
+      mostrar:false
     }
   },
   computed: {
@@ -38,6 +43,14 @@ export default {
   watch: {
     numero: function (newNumero, oldNumero)
     {
+      if(this.numero === 0)
+      {
+        this.mostrar = false
+      }
+      else
+      {
+        this.mostrar =  true
+      }
       console.log("newNumero: "+newNumero+" oldNumero:"+oldNumero)
 
      // alert("cambio el valor de "+oldNumero+" a "+newNumero)
