@@ -49,7 +49,8 @@ export default {
       console.log(this.usuario);
       console.log(this.contrasena);
       console.log("estas logeado");
-      axios.get('http://localhost:51628/Login/'+this.usuario+"/"+this.contrasena)
+      // axios.get('http://localhost:51628/Login/'+this.usuario+"/"+this.contrasena)
+      axios.get('http://127.0.0.1:51628/Api/Institución/Todos')
       .then(response => {
         console.log(response)
       })
