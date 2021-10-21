@@ -17,17 +17,17 @@
           v-model="usuario"
         />
         <input
-          type="text"
+          type="password"
           class="fadeIn third"
           name="password"
           placeholder="contraseña"
           v-model="contrasena"
         />
         <input
-          type="submit"
+          type="button"
           class="fadeIn fourth"
           value="Entrar"
-          @click="logearse"
+          @click="logearse()"
         />
       </form>
 
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+
+import axios from 'axios'
 export default {
   setup() {},
   methods: {
@@ -47,6 +49,10 @@ export default {
       console.log(this.usuario);
       console.log(this.contrasena);
       console.log("estas logeado");
+      axios.get('http://localhost:51628/Login/'+this.usuario+"/"+this.contrasena)
+      .then(response => {
+        console.log(response)
+      })
     },
   },
 };
@@ -169,7 +175,8 @@ input[type="reset"]:active {
   transform: scale(0.95);
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
