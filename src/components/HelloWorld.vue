@@ -15,11 +15,14 @@
       <button @click="numero=0">resetear a 0</button>
     </p>
   </div>
+  <componente-de-pruebas></componente-de-pruebas>
 </template>
 
 <script>
+import ComponenteDePruebas from "./ComponenteDePruebas";
 export default {
   name: 'HelloWorld',
+  components: {ComponenteDePruebas},
   props: {
     msg: String,
   },
