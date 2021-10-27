@@ -13,6 +13,9 @@
           <li class="nav-item">
             <router-link class="nav-link active" to="/about">About</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/formulario">Formulario</router-link>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
