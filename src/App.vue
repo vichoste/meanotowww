@@ -1,8 +1,7 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <header>
+    <nav-bar-exemplo></nav-bar-exemplo>
+  </header>
   <router-view/>
 </template>
 
@@ -28,3 +27,9 @@
   color: #42b983;
 }
 </style>
+<script>
+import NavBarExemplo from "./components/NavBarExemplo";
+export default {
+  components: {NavBarExemplo}
+}
+</script>

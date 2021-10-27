@@ -12,7 +12,7 @@
     <button @click="numero++">+1</button>
     <button @click="numero--">-1</button>
     <p>
-      <button @click="numero=0">resetear a 0</button>
+      <button type="button" class="btn btn-primary" @click="numero=0">resetear a 0</button>
     </p>
   </div>
   <componente-de-pruebas></componente-de-pruebas>
