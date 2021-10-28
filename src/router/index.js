@@ -22,6 +22,22 @@ const routes = [
     // this generates a separate chunk (Formulario.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "Formulario" */ '../views/Formulario.vue')
+  },
+  {
+    path: '/prueba2',
+    name: 'Prueba2',
+    // route level code-splitting
+    // this generates a separate chunk (Formulario.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Formulario" */ '../views/VistasGenerales/VistaPrueba2.vue')
+  },
+  {
+    path: '/prueba3',
+    name: 'Prueba3',
+    // route level code-splitting
+    // this generates a separate chunk (Formulario.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Formulario" */ '../views/VistasGenerales/VistaPrueba3.vue')
   }
 
 ]

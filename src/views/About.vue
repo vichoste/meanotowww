@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Cuentas></Cuentas>
   </div>
 </template>
+
+<script>
+import Cuentas from "../components/Cuentas";
+export default {
+  components: {Cuentas}
+}
+</script>

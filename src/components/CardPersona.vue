@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h1>{{nombre}}</h1>
-    <h2>{{edad}}</h2>
-    <p>
-      -------------*-------------
-      -------------*-------------
-    </p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{nombre}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{edad}}</h6>
+    </div>
   </div>
 </template>
 

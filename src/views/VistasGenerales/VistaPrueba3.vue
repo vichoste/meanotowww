@@ -1,10 +1,12 @@
 <template>
-$END$
+  <Prueba3></Prueba3>
 </template>
 
 <script>
+import Prueba3 from "../../components/Prueba3";
 export default {
-name: "VistaPrueba3"
+  name: "VistaPrueba3",
+  components: {Prueba3}
 }
 </script>
 
