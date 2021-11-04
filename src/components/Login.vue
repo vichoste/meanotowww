@@ -43,6 +43,7 @@
 
 import axios from 'axios'
 export default {
+  name: "Login",
   setup() {},
   methods: {
     logearse() {
@@ -59,7 +60,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* BASIC */
 
 html {
@@ -203,7 +204,7 @@ input[type="text"]:focus {
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type="text"]:placeholder {
+input[type="text"]::placeholder {
   color: #cccccc;
 }
 
