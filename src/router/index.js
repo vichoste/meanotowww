@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 
-const routes = [
+// eslint-disable-next-line no-undef
+const routes =[
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
   },
   {
     path: '/about',
@@ -16,30 +16,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/formulario',
-    name: 'Formulario',
-    // route level code-splitting
-    // this generates a separate chunk (Formulario.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Formulario" */ '../views/Formulario.vue')
+    path: '/holaMundo',
+    name: 'holaMundo',
+    component: () => import(/* webpackChunkName: "about" */ '../components/HelloWorld'),
+    meta:{
+      requiereAuth: true ,
+    },
   },
-  {
-    path: '/prueba2',
-    name: 'Prueba2',
-    // route level code-splitting
-    // this generates a separate chunk (Formulario.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Formulario" */ '../views/VistasGenerales/VistaPrueba2.vue')
-  },
-  {
-    path: '/prueba3',
-    name: 'Prueba3',
-    // route level code-splitting
-    // this generates a separate chunk (Formulario.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Formulario" */ '../views/VistasGenerales/VistaPrueba3.vue')
-  }
-
 ]
 
 const router = createRouter({
@@ -47,4 +30,18 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to,from, next) => {
+
+  if(to.matched.some(record => record.meta.requiereAuth === false))
+  {
+    next({
+      name: 'holaMundo'
+    })
+  }
+  else
+  {
+    next()
+  }
+})
 export default router
+

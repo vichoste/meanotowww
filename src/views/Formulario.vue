@@ -1,11 +1,12 @@
 <template>
-  <formulario-p></formulario-p>
+  <H1>Holaaaaa</H1>
+  <Login></Login>
 </template>
 
 <script>
-import FormularioP from "../components/FormularioP";
+import Login from "../components/Login";
 export default {
   name: "Formulario",
-  components: {FormularioP}
+  components: {Login}
 }
 </script>

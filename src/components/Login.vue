@@ -41,7 +41,7 @@
 
 <script>
 
-import axios from 'axios'
+//import axios from 'axios'
 export default {
   name: "Login",
   setup() {},
@@ -51,10 +51,12 @@ export default {
       console.log(this.contrasena);
       console.log("estas logeado");
       // axios.get('http://localhost:51628/Login/'+this.usuario+"/"+this.contrasena)
-      axios.get('http://127.0.0.1:51628/Api/Institución/Todos')
+      /*axios.get('http://127.0.0.1:51628/Api/Institución/Todos')
       .then(response => {
         console.log(response)
       })
+       */
+      this.$router.push('/holaMundo')
     },
   },
 };
