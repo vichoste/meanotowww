@@ -56,6 +56,15 @@ export default {
         console.log(response)
       })
        */
+
+      // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
+      // revisar https://www.npmjs.com/package/vue3-cookies
+      const user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' };
+      this.$cookies.set('user',user,'1h');
+      // print user name
+      console.log(this.$cookies.get('user').name)
+
+
       this.$router.push('/holaMundo')
     },
   },
