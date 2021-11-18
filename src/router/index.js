@@ -20,7 +20,7 @@ const routes =[
     name: 'holaMundo',
     component: () => import(/* webpackChunkName: "about" */ '../components/HelloWorld'),
     meta:{
-      requiereAuth: true ,
+      requiereAuth: true
     },
   },
 ]
@@ -32,7 +32,7 @@ const router = createRouter({
 
 router.beforeEach((to,from, next) => {
 
-  if(to.matched.some(record => record.meta.requiereAuth === false))
+  if(to.matched.some(record => record.meta.requiereAuth === false ))
   {
     next({
       name: 'holaMundo'

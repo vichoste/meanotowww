@@ -41,21 +41,28 @@
 
 <script>
 
-//import axios from 'axios'
+import axios from 'axios'
 export default {
   name: "Login",
+  data () {
+    return{
+      contrasena: null,
+      usuario: null
+    }
+  },
   setup() {},
   methods: {
     logearse() {
       console.log(this.usuario);
       console.log(this.contrasena);
       console.log("estas logeado");
-      // axios.get('http://localhost:51628/Login/'+this.usuario+"/"+this.contrasena)
-      /*axios.get('http://127.0.0.1:51628/Api/Institución/Todos')
-      .then(response => {
+      const userr = {
+        email: this.usuario,
+        contraseña: this.contrasena
+      }
+      axios.post('http://localhost:34592/api/autenticación/login/',userr).then(response => {
         console.log(response)
       })
-       */
 
       // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
       // revisar https://www.npmjs.com/package/vue3-cookies
@@ -65,7 +72,7 @@ export default {
       console.log(this.$cookies.get('user').name)
 
 
-      this.$router.push('/holaMundo')
+      this.$router.push('holaMundo')
     },
   },
 };
