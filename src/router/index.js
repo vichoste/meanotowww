@@ -31,12 +31,19 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from, next) => {
-
-  if(to.matched.some(record => record.meta.requiereAuth === false ))
+  const logg = false
+  if(to.matched.some(record => record.meta.requiereAuth))
   {
-    next({
-      name: 'holaMundo'
-    })
+    if(logg)
+    {
+      next()
+    }
+    else
+    {
+      console.log("holav  111")
+      next(false)
+    }
+
   }
   else
   {
