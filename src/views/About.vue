@@ -1,12 +1,12 @@
 <template>
   <div class="about">
-    <Cuentas></Cuentas>
+    <FormularioCrearCuenta></FormularioCrearCuenta>
   </div>
 </template>
 
 <script>
-import Cuentas from "../components/Cuentas";
+import FormularioCrearCuenta from "../components/FormularioCrearCuenta";
 export default {
-  components: {Cuentas}
+  components: { FormularioCrearCuenta}
 }
 </script>

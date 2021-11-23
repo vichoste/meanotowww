@@ -60,19 +60,32 @@ export default {
         email: this.usuario,
         contraseña: this.contrasena
       }
-      axios.post('http://localhost:34592/api/autenticación/login/',userr).then(response => {
-        console.log(response)
+      axios.post('http://localhost:34592/api/autenticación/login',userr).then(response => {
+        console.log(response.data)
+       const cosas = response.data
+        const user = {
+          correo: this.usuario,
+          estado: cosas.estado,
+          token: cosas.token ,
+          expira: cosas.expira
+        };
+        this.$cookies.set('user',user,'1h');
+        this.$router.push('holaMundo')
+      }).catch( error => {
+        console.log(error)
       })
 
-      // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
-      // revisar https://www.npmjs.com/package/vue3-cookies
-      const user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' };
-      this.$cookies.set('user',user,'1h');
-      // print user name
-      console.log(this.$cookies.get('user').name)
-
+      localStorage.setItem('correo', 'ajajaja soy un correo')
+      localStorage.setItem('estado', 'ajajaja soy un estado')
+      localStorage.setItem('token', 'ajajaja soy un token')
+      localStorage.setItem('expira', 'ajajaja soy un expira')
 
       this.$router.push('holaMundo')
+      // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
+      // revisar https://www.npmjs.com/package/vue3-cookies
+
+
+      // print user name
     },
   },
 };
