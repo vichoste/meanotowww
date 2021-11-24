@@ -2,6 +2,22 @@
   <div class="container-fluid" >
     <form class="col-sm-9" >
       <div class="mb-3">
+        <label>Tipo de usuario</label>
+        <select v-model="tipoCuenta" class="form-select" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option value="Admin">Admin</option>
+          <option value="profe">profe</option>
+          <option value="encargado">encargado</option>
+        </select>
+      </div>
+      <div  v-if="tipoCuenta != 'Admin'" class="mb-3">
+        <select class="form-select" aria-label="Default select example">
+          <option value="Admin">utalca</option>
+          <option value="profe">uchile</option>
+          <option value="encargado">uai</option>
+        </select>
+      </div>
+      <div class="mb-3">
         <label for="rut" class="form-label">RUT </label>
         <input v-model="rut" type="text" class="form-control" id="rut">
       </div>
@@ -36,7 +52,8 @@ export default {
       nombres:String,
       apellidos:String,
       email:String,
-      contrasena:String
+      contrasena:String,
+      tipoCuenta:String
 
     }
   }
