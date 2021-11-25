@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="row m-5">
-      <div class="col-12 col-lg-8">
+      <div id="welcome" class="col-12 col-lg-8">
         <div class="card">
           <div class="row">
             <div class="col-12 col-sm-4 text-center">
@@ -17,7 +17,10 @@
           </div>
         </div>
       </div>
-      <div id="login" class="col-12 col-lg-4">
+      <div id="vertical" class="col-lg-1">
+        <div class="vl"></div>
+      </div>
+      <div id="login" class="col-12 col-lg-3">
         <div class="card">
           <form class="card-body">
             <h5 class="card-title">Inicio de sesión</h5>
@@ -25,11 +28,11 @@
             <input
               type="password"
               name="password"
-              placeholder="contraseña"
+              placeholder="Contraseña"
               v-model="contrasena"
             />
             <input type="button" value="Entrar" @click="logearse()" />
-            <a class="underlineHover" href="#">Olvidaste la contraseña?</a>
+            <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
           </form>
         </div>
       </div>
@@ -41,8 +44,8 @@
 main {
   background: radial-gradient(
       circle,
-      rgba(84, 110, 122, 0.6) 0%,
-      rgba(84, 110, 122, 0.9) 100%
+      rgba(54, 80, 102, 0.7) 0%,
+      rgba(54, 80, 102, 0.95) 100%
     ),
     url("../assets/background1.jpg") !important;
   background-position: center !important;
@@ -61,8 +64,28 @@ main {
     text-align: center;
   }
 }
+@media only screen and (max-width: 992px) {
+  #vertical {
+    display: none !important;
+  }
+}
+#vertical {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 #utal {
   width: calc(10vw + 5vh);
+}
+#welcome {
+  display: flex;
+  align-items: stretch;
+  color: white;
+}
+#welcome .card {
+  background: transparent;
+  border: none;
 }
 #login {
   display: flex;
@@ -83,6 +106,10 @@ form {
   flex-direction: column;
   align-items: center;
   align-content: space-around;
+}
+.vl {
+  border-left: 0.25rem solid white;
+  height: 500px;
 }
 </style>
 
