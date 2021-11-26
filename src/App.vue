@@ -1,8 +1,6 @@
 <template>
-  <header>
-    <nav-bar-exemplo></nav-bar-exemplo>
-  </header>
-  <router-view/>
+  <nav-bar-exemplo></nav-bar-exemplo>
+  <router-view></router-view>
 </template>
 
 <style>

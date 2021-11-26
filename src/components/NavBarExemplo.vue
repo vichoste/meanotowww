@@ -7,22 +7,53 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <NavBarVistaAdmin v-if="getRol==='administrador'"></NavBarVistaAdmin>
           <li class="nav-item">
-            <router-link class="nav-link active" to="/about">About</router-link>
+            <router-link class="nav-link active" to="/nosotros">Nosotros</router-link>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <buton v-on:click="cerrarSecion" type="button" class="btn btn-primary">cerrar secion</buton>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import router from "../router";
+import NavBarVistaAdmin from "./NavBarVistaAdmin";
+
 export default {
-  name: "NavBarExemplo"
+  name: "NavBarExemplo",
+  components: {NavBarVistaAdmin},
+  computed:
+      {
+        getRol: function ()
+        {
+          let user = JSON.parse(localStorage.getItem('usuario'))
+          console.log(user)
+          if(user  !== null)
+          {
+            switch (user.roles[0])
+            {
+              case 'administrador':
+                return 'administrador'
+
+              default:
+                return 'null'
+
+            }
+          }
+          return 'null'
+        }
+      },
+  methods: {
+    cerrarSecion()
+    {
+      localStorage.clear()
+      console.log('ajjaaj saludos')
+      router.push('/')
+    }
+  }
 }
 </script>
 

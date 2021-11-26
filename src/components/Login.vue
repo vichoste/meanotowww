@@ -67,20 +67,27 @@ export default {
           correo: this.usuario,
           estado: cosas.estado,
           token: cosas.token ,
-          expira: cosas.expira
+          expira: cosas.expira,
+          roles: cosas.roles
         };
-        this.$cookies.set('user',user,'1h');
-        this.$router.push('holaMundo')
+        localStorage.setItem('usuario', JSON.stringify(user))
+        const rol = user.roles[0]
+        console.log('admin:'+rol)
+        switch (rol)
+        {
+          case 'administrador':
+            console.log("adminnnn")
+            this.$router.push('vistaCuentas')
+                break;
+          default:
+            console.log("no adminnnn")
+            this.$router.push('/')
+                break;
+        }
+
       }).catch( error => {
         console.log(error)
       })
-
-      localStorage.setItem('correo', 'ajajaja soy un correo')
-      localStorage.setItem('estado', 'ajajaja soy un estado')
-      localStorage.setItem('token', 'ajajaja soy un token')
-      localStorage.setItem('expira', 'ajajaja soy un expira')
-
-      this.$router.push('holaMundo')
       // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
       // revisar https://www.npmjs.com/package/vue3-cookies
 

@@ -1,12 +1,11 @@
 <template>
   <div class="about">
-    <FormularioCrearCuenta></FormularioCrearCuenta>
+   <h1>nosotros</h1>
   </div>
 </template>
 
 <script>
-import FormularioCrearCuenta from "../components/FormularioCrearCuenta";
 export default {
-  components: { FormularioCrearCuenta}
+  components: {}
 }
 </script>
