@@ -18,7 +18,7 @@ const routes =[
   {
     path: '/holaMundo',
     name: 'holaMundo',
-    component: () => import(/* webpackChunkName: "about" */ '../components/HelloWorld'),
+    component: () => import(/* webpackChunkName: "about" */ '../components/hola'),
     meta:{
       requiereAuth: true
     },

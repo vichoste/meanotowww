@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <NavBarVistaAdmin v-if="getRol==='administrador'"></NavBarVistaAdmin>
+          <NavBarVistaAdmin v-if="getCounter<5"></NavBarVistaAdmin>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros">Nosotros</router-link>
           </li>
@@ -21,29 +21,15 @@
 <script>
 import router from "../router";
 import NavBarVistaAdmin from "./NavBarVistaAdmin";
+import store from "../store";
 
 export default {
   name: "NavBarExemplo",
   components: {NavBarVistaAdmin},
   computed:
       {
-        getRol: function ()
-        {
-          let user = JSON.parse(localStorage.getItem('usuario'))
-          console.log(user)
-          if(user  !== null)
-          {
-            switch (user.roles[0])
-            {
-              case 'administrador':
-                return 'administrador'
-
-              default:
-                return 'null'
-
-            }
-          }
-          return 'null'
+        getCounter: function(){
+          return store.getters.getRol
         }
       },
   methods: {

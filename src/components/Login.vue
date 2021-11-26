@@ -71,7 +71,10 @@ export default {
           expira: cosas.expira,
           roles: cosas.roles
         };
+        console.log('user')
+        console.log(user)
         store.dispatch('actionSetUser',user)
+        console.log(store.getters.getRol)
         localStorage.setItem('usuario', JSON.stringify(user))
         const rol = user.roles[0]
         console.log('admin:'+rol)

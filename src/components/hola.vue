@@ -4,8 +4,7 @@
     <br/>
     <a>{{miProp}}</a>
     <br/>
-    <p v-if="mostrar">{{doble}}</p>
-    <p v-else> esta en 0 ._.</p>
+    <p>{{counterValue}}</p>
 
     <!--con la linea de abajos e puede llmar una funcion al cliquear un componente del html, pos se mamo esto XDXDX-->
     <p v-on:click="miClick">{{numero}}</p>
@@ -21,7 +20,7 @@
 <script>
 import ComponenteDePruebas from "./ComponenteDePruebas";
 export default {
-  name: 'HelloWorld',
+  name: 'hola',
   components: {ComponenteDePruebas},
   props: {
     msg: String,
@@ -39,8 +38,8 @@ export default {
     }
   },
   computed: {
-    doble: function () {
-      return this.numero * 5
+    counterValue: function () {
+      return this.store.getRol()
     }
   },
   watch: {

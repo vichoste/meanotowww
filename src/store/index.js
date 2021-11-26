@@ -2,34 +2,25 @@ import { createStore } from 'vuex'
 
 const store = createStore({
   state: {
-    user: {
-      correo:String,
-      estado:String,
-      expira:String,
-      rol:[],
-      token:String,
-
-    }
+    counter:0
   },
   mutations: {
-    setUser(state, payload) {
-      state.user = payload.user
-    }
+    changeValueInN(state, data = {})
+    {
+      state.counter+=data.valor;
+    },
   },
   actions: {
-    actionSetUser({commit}, payload){
-      commit('setUser',payload)
-    }
+   actionChageValueinN(contex, data)
+   {
+     contex.commit('changeValueInN', data)
+   }
   },
   modules: {
   },
   getters:{
       getRol(state){
-        if(state.user.rol.length ===0 )
-        {
-          return 'null'
-        }
-        return state.user.rol[0]
+        return state.counter
       }
   }
 })

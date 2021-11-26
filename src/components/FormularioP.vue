@@ -1,30 +1,34 @@
 <template>
   <div>
-    <a> prueba1 del formulario</a>
-    <br/>
-    <div>
-      <label id="Nombre">Nombre</label>
-      <input type="text" v-model="nombre">
-      <br/>
-      <label id="Contrasena">Contraseña</label>
-      <input type="password" v-model="contrasena">
-      <br/>
-      <label id="Edad">Edad</label>
-      <input type="number" v-model="edad">
-    </div>
-
-
+    <p>{{getCounter}}</p>
+    <button @click="miClick(+1)">mas 1</button>
+    <button @click="miClick(-1)">menos 1</button>
+    <p v-if="getCounter>5">uff men que alto</p>
   </div>
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   name: "FormularioP",
-  data(){
-    return {
-      nombre:" ",
-      contrasena:"",
-      edad:Number,
+  data(){},
+  methods:{
+    miClick(n)
+    {
+      store.dispatch('actionChageValueinN', {
+        valor:n
+      })
+      /*
+      store.commit('changeValueInN',{
+        valor:n
+      })
+       */
+    }
+  },
+  computed:{
+    getCounter: function(){
+      return store.getters.getRol
     }
   },
   watch: {
