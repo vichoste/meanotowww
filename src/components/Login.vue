@@ -42,6 +42,7 @@
 <script>
 
 import axios from 'axios'
+import store from "../store";
 export default {
   name: "Login",
   data () {
@@ -70,6 +71,7 @@ export default {
           expira: cosas.expira,
           roles: cosas.roles
         };
+        store.dispatch('actionSetUser',user)
         localStorage.setItem('usuario', JSON.stringify(user))
         const rol = user.roles[0]
         console.log('admin:'+rol)
