@@ -55,8 +55,8 @@
 main {
   background: radial-gradient(
       circle,
-      rgba(54, 80, 102, 0.7) 0%,
-      rgba(54, 80, 102, 0.95) 100%
+      rgba(33, 36, 41, 0.7) 0%,
+      rgba(33, 36, 41, 0.95) 100%
     ),
     url("../assets/background1.jpg") !important;
   background-position: center !important;
