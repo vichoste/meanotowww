@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <NavBarVistaAdmin v-if="getCounter<5"></NavBarVistaAdmin>
+          <NavBarVistaAdmin v-if="getRol === 'administrador'"></NavBarVistaAdmin>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros">Nosotros</router-link>
           </li>
@@ -30,12 +30,27 @@ export default {
       {
         getCounter: function(){
           return store.getters.getRol
+        },
+        getRol:function ()
+        {
+          return store.getters.getRol
         }
       },
   methods: {
     cerrarSecion()
     {
       localStorage.clear()
+      let user=
+      {
+        correo: "",
+            estado: "",
+          token: "",
+          expira: "",
+          roles: []
+      }
+      store.dispatch('actionSetUser', {
+        user: user
+      })
       console.log('ajjaaj saludos')
       router.push('/')
     }

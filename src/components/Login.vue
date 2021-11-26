@@ -73,7 +73,9 @@ export default {
         };
         console.log('user')
         console.log(user)
-        store.dispatch('actionSetUser',user)
+        store.dispatch('actionSetUser', {
+          user: user
+        })
         console.log(store.getters.getRol)
         localStorage.setItem('usuario', JSON.stringify(user))
         const rol = user.roles[0]

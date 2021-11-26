@@ -28,7 +28,7 @@ export default {
   },
   computed:{
     getCounter: function(){
-      return store.getters.getRol
+      return store.getters.getCounter
     }
   },
   watch: {
