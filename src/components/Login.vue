@@ -1,13 +1,13 @@
 <template>
   <main>
     <div class="row m-5">
-      <div id="welcome" class="col-12 col-lg-8">
+      <div id="welcome" class="col-12 col-lg-7">
         <div class="card">
           <div class="row">
-            <div class="col-12 col-sm-4 text-center">
+            <div class="col-12 col-sm-5 text-center">
               <img id="utal" class="m-5" src="../assets/utal.png" />
             </div>
-            <div class="col-12 col-sm-8 card-body">
+            <div class="col-12 col-sm-7 card-body">
               <h2 class="card-title">¡Me Anoto!</h2>
               <h5 class="card-text">
                 Gestione sus visitas a la universidad mediante la programación e
@@ -20,19 +20,30 @@
       <div id="vertical" class="col-lg-1">
         <div class="vl"></div>
       </div>
-      <div id="login" class="col-12 col-lg-3">
+      <div id="login" class="col-12 col-lg-4">
         <div class="card">
           <form class="card-body">
-            <h5 class="card-title">Inicio de sesión</h5>
-            <input type="text" placeholder="RUN" v-model="usuario" />
+            <h5 class="card-title mb-3">Inicio de sesión</h5>
             <input
+              class="form-control mb-3"
+              type="text"
+              placeholder="RUN"
+              v-model="usuario"
+            />
+            <input
+              class="form-control mb-3"
               type="password"
               name="password"
               placeholder="Contraseña"
               v-model="contrasena"
             />
-            <input type="button" value="Entrar" @click="logearse()" />
-            <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
+            <input
+              class="btn btn-primary mb-3"
+              type="button"
+              value="Entrar"
+              @click="logearse()"
+            />
+            <a href="#">¿Olvidaste tu contraseña?</a>
           </form>
         </div>
       </div>
@@ -56,7 +67,7 @@ main {
   margin: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  overflow: hidden !important;
+  overflow: auto !important;
 }
 @media only screen and (max-width: 576px) {
   h2,
@@ -86,6 +97,7 @@ main {
 #welcome .card {
   background: transparent;
   border: none;
+  box-shadow: none !important;
 }
 #login {
   display: flex;
@@ -97,7 +109,16 @@ main {
   align-content: space-around;
   align-items: center;
 }
-.card,
+.card {
+  align-items: center;
+  border-style: solid;
+  border-color: #546e7a;
+  border-width: 0.125rem;
+  margin: 2rem auto;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  background-color: #eceff1;
+}
 .card-text {
   align-items: center;
 }
