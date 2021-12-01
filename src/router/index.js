@@ -24,15 +24,6 @@ const routes =[
     },
   },
   {
-    path: '/VistaAdmin',
-    name: 'vistaAdmin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/VistasAdmin/VistaAdmin'),
-    meta:{
-      requiereAuth: true
-    },
-
-  },
-  {
     path: '/VistaCuentas',
     name: 'vistaCuentas',
     component: () => import(/* webpackChunkName: "about" */ '../views/VistasAdmin/VistaCuetas'),
@@ -67,6 +58,46 @@ const routes =[
       requiereAuth: true
     },
 
+  },
+  {
+    path: '/VistaEventoProfesor',
+    name: 'vistaEventoProfesor',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VistasProfesor/VistaEventosProfesor'),
+    meta:{
+      requiereAuth: true
+    },
+  },
+  {
+    path: '/VistaModulosProfesor',
+    name: 'vistaModulosProfesor',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VistasProfesor/VistaModulosProfesor'),
+    meta: {
+      requiereAuth: true
+    },
+  },
+  {
+    path: '/VistaCursosAsistente',
+    name: 'vistaCursosAsistente',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VistasAsistente/VistaCursosAsistente'),
+    meta: {
+      requiereAuth: true
+    },
+  },
+  {
+    path: '/VistaEventosAsistente',
+    name: 'vistaEventosAsistente',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VistasAsistente/VistaEventosAsistente'),
+    meta: {
+      requiereAuth: true
+    },
+  },
+  {
+    path: '/VistaProximosEventosAsistente',
+    name: 'vistaProximosEventosAsistente',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VistasAsistente/VistaProximosEventosAsistente'),
+    meta: {
+      requiereAuth: true
+    },
   },
 ]
 
