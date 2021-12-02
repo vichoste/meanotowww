@@ -6,10 +6,9 @@
 import FormularioCrearCuenta from "../../components/FormularioCrearCuenta";
 export default {
   name: "VistaCuetas",
-  components: {FormularioCrearCuenta}
-}
+  components: { FormularioCrearCuenta },
+};
 </script>
 
 <style scoped>
-
 </style>

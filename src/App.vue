@@ -1,33 +1,48 @@
 <template>
   <nav-bar-exemplo></nav-bar-exemplo>
-  <router-view></router-view>
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+main {
+  background: radial-gradient(
+      circle,
+      rgba(33, 37, 41, 0.8) 50%,
+      rgba(33, 37, 41, 0.75) 100%
+    ),
+    url("./assets/background1.jpg") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  position: fixed;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: auto !important;
 }
-
-#nav {
-  padding: 30px;
+.card {
+  color: white;
+  align-items: stretch;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.25);
+  border-width: 0.125rem;
+  margin: 2rem auto;
+  background: radial-gradient(
+    circle,
+    rgba(33, 37, 41, 0.8) 50%,
+    rgba(33, 37, 41, 0.75) 100%
+  );
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.card a {
+  color: slategrey;
 }
 </style>
 <script>
 import NavBarExemplo from "./components/NavBarExemplo";
 export default {
-  components: {NavBarExemplo}
-}
+  components: { NavBarExemplo },
+};
 </script>
