@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
+      <h5 class="card-title text-center">Crear cuenta</h5>
       <form>
         <div class="mb-3">
           <label class="mb-2">Tipo de usuario</label>
