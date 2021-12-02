@@ -20,7 +20,7 @@
     <div id="vertical" class="col-lg-1">
       <div class="vl"></div>
     </div>
-    <div id="login" class="col-12 col-lg-4">
+    <div id="login" class="col-12 col-lg-4 text-center">
       <div class="card">
         <form class="card-body">
           <h5 class="card-title mb-3">Inicio de sesión</h5>
@@ -92,18 +92,9 @@
   align-items: center;
 }
 
-.card-text {
-  align-items: center;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: space-around;
-}
 .vl {
   border-left: 0.25rem solid rgba(255, 255, 255, 0.25);
-  height: 500px;
+  height: 20rem;
 }
 </style>
 
