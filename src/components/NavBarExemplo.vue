@@ -12,7 +12,7 @@
             <router-link class="nav-link active" to="/nosotros">Nosotros</router-link>
           </li>
         </ul>
-        <buton v-on:click="cerrarSecion" type="button" class="btn btn-primary">cerrar secion</buton>
+        <buton v-if="getRol!== 'null'" v-on:click="cerrarSecion" type="button" class="btn btn-primary">cerrar secion</buton>
       </div>
     </div>
   </nav>

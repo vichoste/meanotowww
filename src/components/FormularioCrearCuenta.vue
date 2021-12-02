@@ -5,9 +5,10 @@
         <label>Tipo de usuario</label>
         <select v-model="tipoCuenta" class="form-select" aria-label="Default select example">
           <option selected>Open this select menu</option>
-          <option value="Admin">Admin</option>
-          <option value="profe">profe</option>
-          <option value="encargado">encargado</option>
+          <option value="Administrador">Admin</option>
+          <option value="Profesor">Profesor</option>
+          <option value="Encargado">Encargado</option>
+          <option value="Encargado">Asistente</option>
         </select>
       </div>
       <div  v-if="tipoCuenta != 'Admin'" class="mb-3">
@@ -48,12 +49,12 @@ export default {
   name: "FormularioCrearCuenta",
   data(){
     return {
-      rut:String,
-      nombres:String,
-      apellidos:String,
-      email:String,
-      contrasena:String,
-      tipoCuenta:String
+      rut:" ",
+      nombres:" ",
+      apellidos:" ",
+      email:" ",
+      contrasena:" ",
+      tipoCuenta:" "
 
     }
   }
