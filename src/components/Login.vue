@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row m-5">
+  <div class="row">
     <div id="welcome" class="col-12 col-lg-7">
       <div class="card">
         <div class="row">
