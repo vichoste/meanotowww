@@ -1,6 +1,8 @@
 <template>
   <h1>usuarios</h1>
-  <a></a>
+  <table class="table table-dark table-hover">
+
+  </table>
   <button @click="cargarCuentas">cargar cuentas</button>
 </template>
 

@@ -7,8 +7,22 @@
       </div>
 
       <button type="button" @click="this.validarInstitucion" class="btn btn-primary">Crear universidad</button>
+      <br/>
       <button type="button" @click="this.cargarInstituciones" class="btn btn-primary">cargar universidad</button>
-      <!--<a v-for="institucion in getInstituciones" :key="institucion."></a> -->
+      <table class="table table-dark table-hover" v-if="cargadas">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(c, index) in this.listaInstituciones" :key="c.id">
+          <th scope="row">{{index}}</th>
+          <td>{{c.nombre}}</td>
+        </tr>
+        </tbody>
+      </table>
     </form>
 
   </div>
@@ -25,15 +39,13 @@ export default {
         getToken:function ()
         {
           return store.getters.getToken
-        },
-        getInstituciones:function ()
-        {
-          return this.cargarInstituciones()
         }
       },
   data(){
     return{
-      nombre:" "
+      nombre:" ",
+      listaInstituciones:[],
+      cargadas:false
     }
   },
   methods:{
@@ -65,18 +77,30 @@ export default {
         console.log(error)
       })
     },
-    cargarInstituciones()
-    {
+    cargarInstituciones(){
       let url ='http://localhost:34592/api/institución/listar'
       axios.get(url, {
         headers:{
           'Authorization': `Bearer ${this.getToken}`
         }
       }).then(response => {
-        const cosas = response.data
-        console.log(cosas)
-        return cosas
+        this.listaInstituciones = []
+        let lista = response.data
+        console.log(response.data)
+        console.log(lista)
+        for (let i = 0; i < lista.length; i++) {
+          console.log(lista[i])
+          let institucion = {
+            id:lista[i].id,
+            nombre:lista[i].nombre
+          }
+          console.log(institucion)
+          this.listaInstituciones.push(institucion)
+        }
+        console.log(this.listaInstituciones)
+        this.cargadas =true;
       }).catch( error => {
+        console.log("jajaj error")
         console.log(error)
       })
     }
