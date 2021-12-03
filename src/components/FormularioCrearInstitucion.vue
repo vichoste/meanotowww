@@ -6,7 +6,9 @@
         <input v-model="nombre" type="text" class="form-control" id="nombre">
       </div>
 
-      <button type="button" @click="this.validarInstitucion" class="btn btn-primary">Crear institucion</button>
+      <button type="button" @click="this.validarInstitucion" class="btn btn-primary">Crear universidad</button>
+      <button type="button" @click="this.cargarInstituciones" class="btn btn-primary">cargar universidad</button>
+      <!--<a v-for="institucion in getInstituciones" :key="institucion."></a> -->
     </form>
 
   </div>
@@ -23,6 +25,10 @@ export default {
         getToken:function ()
         {
           return store.getters.getToken
+        },
+        getInstituciones:function ()
+        {
+          return this.cargarInstituciones()
         }
       },
   data(){
@@ -44,7 +50,6 @@ export default {
     },
     crearInstitucion()
     {
-      console.log(`Bearer ${this.getToken}`)
       let url='http://localhost:34592/api/institución'
       const institucion = {
         nombre: this.nombre
@@ -54,13 +59,27 @@ export default {
           'Authorization': `Bearer ${this.getToken}`
         }
       }).then(response => {
-        console.log(response.data)
         const cosas = response.data
         console.log(cosas)
       }).catch( error => {
         console.log(error)
       })
     },
+    cargarInstituciones()
+    {
+      let url ='http://localhost:34592/api/institución/listar'
+      axios.get(url, {
+        headers:{
+          'Authorization': `Bearer ${this.getToken}`
+        }
+      }).then(response => {
+        const cosas = response.data
+        console.log(cosas)
+        return cosas
+      }).catch( error => {
+        console.log(error)
+      })
+    }
   }
 }
 </script>

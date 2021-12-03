@@ -13,7 +13,7 @@
         <input
           type="text"
           class="fadeIn second"
-          placeholder="RUN"
+          placeholder="Correo Electronico"
           v-model="usuario"
         />
         <input

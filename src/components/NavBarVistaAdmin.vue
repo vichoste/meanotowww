@@ -1,6 +1,6 @@
 <template>
           <li class="nav-item">
-            <router-link class="nav-link active" to="/vistaCuentas">Cuetas</router-link>
+            <router-link class="nav-link active" to="/vistaCuentas">Cuentas</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link active" to="/vistaSalas">Salas</router-link>

@@ -13,9 +13,7 @@
       </div>
       <div  v-if="tipoCuenta != 'Administrador'" class="mb-3">
         <select v-model="institucion" class="form-select" aria-label="Default select example">
-          <option value=1>Utalca</option>
-          <option value=2>Uchile</option>
-          <option value=3>Uai</option>
+          <option v-for="institucionn in this.listaInstituciones" :key="institucionn.nombre" v-bind:value="institucionn.id">{{institucionn.nombre}}</option>
         </select>
       </div>
       <div class="mb-3">
@@ -38,7 +36,8 @@
         <label for="contrasena" class="form-label">Contraseña</label>
         <input v-model="contrasena" type="password" class="form-control" id="contrasena">
       </div>
-      <button type="button" class="btn btn-primary">crear</button>
+      <button type="button" @click="validarDatos" class="btn btn-primary">crear</button>
+      <button type="button" @click="getInstituciones" class="btn btn-primary">cargar</button>
     </form>
 
   </div>
@@ -46,6 +45,7 @@
 
 <script>
 import axios from 'axios'
+import store from "../store";
 
 export default {
   name: "FormularioCrearCuenta",
@@ -57,7 +57,15 @@ export default {
       email:" ",
       contrasena:" ",
       tipoCuenta:" ",
-      institucion:0
+      institucion:0,
+      listaInstituciones:[],
+      cargadas: false
+    }
+  },
+  computed:{
+    getToken:function ()
+    {
+      return store.getters.getToken
     }
   },
   methods:{
@@ -74,29 +82,34 @@ export default {
       switch (this.tipoCuenta)
       {
         case 'Administrador':
-          url='http://localhost:34592/api/autenticación/login'
-          this.crearCuenta(url,nuevaCuenta)
+          url='http://localhost:34592/api/autenticación/registrar/administrador'
           break;
         case 'Profesor':
           url='http://localhost:34592/api/autenticación/registrar/profesor/'+this.institucion
-          this.crearCuenta(url,nuevaCuenta)
           break;
         case 'Encargado':
-          url='http://localhost:34592/api/autenticación/registrar/profesor/'+this.institucion
-          this.crearCuenta(url,nuevaCuenta)
+          url='http://localhost:34592/api/autenticación/registrar/encargado/'+this.institucion
           break;
         case 'Asistente':
-          url='http://localhost:34592/api/autenticación/registrar/profesor/'+this.institucion
-          this.crearCuenta(url,nuevaCuenta)
+          url='http://localhost:34592/api/autenticación/registrar/asistente/'+this.institucion
           break;
         default:
           console.log('error de cosas')
+            url='null'
           break
+      }
+      if(url!== 'null')
+      {
+        this.crearCuenta(url,nuevaCuenta)
       }
     },
     crearCuenta(url,userr){
 
-      axios.post(url,userr).then(response => {
+      axios.post(url,userr, {
+        headers:{
+          'Authorization': `Bearer ${this.getToken}`
+        }
+      }).then(response => {
         console.log(response.data)
         const cosas = response.data
         console.log(cosas)
@@ -104,6 +117,32 @@ export default {
         console.log(error)
       })
     },
+    getInstituciones(){
+      let url ='http://localhost:34592/api/institución/listar'
+      axios.get(url, {
+        headers:{
+          'Authorization': `Bearer ${this.getToken}`
+        }
+      }).then(response => {
+        this.listaInstituciones = []
+        let lista = response.data
+        console.log(response.data)
+        console.log(lista)
+        for (let i = 0; i < lista.length; i++) {
+          console.log(lista[i])
+          let institucion = {
+            id:lista[i].id,
+            nombre:lista[i].nombre
+          }
+          console.log(institucion)
+          this.listaInstituciones.push(institucion)
+          this.cargadas= true
+        }
+      }).catch( error => {
+        console.log("jajaj error")
+        console.log(error)
+      })
+    }
   }
 }
 
