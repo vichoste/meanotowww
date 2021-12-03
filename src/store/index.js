@@ -49,6 +49,15 @@ const store = createStore({
               return state.user.roles[0]
           }
           return 'null'
+      },
+      getToken(state)
+      {
+          if(state.user.token.length>1)
+          {
+              console.log("tokennn")
+              return state.user.token
+          }
+          return 'null'
       }
 
   }

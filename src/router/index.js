@@ -107,10 +107,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from, next) => {
-  //const logg = this.$cookies.get('user') | null
-  // console.log(this.$cookies.get('user')) si nos irven las cookies usar la strore min 3:53:https://vueschool.io/lessons/how-to-configure-an-authentication-middleware-route-guard-with-vue-router?friend=vuerouter
-  console.log(":D")
-  console.log(":C")
   const user = JSON.parse(localStorage.getItem('usuario'))
   if(!user === null)
   {

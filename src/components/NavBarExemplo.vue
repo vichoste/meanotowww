@@ -15,22 +15,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <NavBarVistaAdmin
-            v-if="getRol === 'administrador'"
-          ></NavBarVistaAdmin>
+          <NavBarVistaAdmin v-if="getRol === 'administrador'"></NavBarVistaAdmin>
+          <NavBarVistasProfesor v-if="getRol === 'profesor'"></NavBarVistasProfesor>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros"
               >Nosotros</router-link
             >
           </li>
         </ul>
-        <buton
-          v-if="getRol !== 'null'"
-          v-on:click="cerrarSecion"
-          type="button"
-          class="btn btn-primary"
-          >Cerrar sesión</buton
-        >
+        <buton v-if="getRol!== 'null'" v-on:click="cerrarSecion" type="button" class="btn btn-primary">cerrar sesion</buton>
       </div>
     </div>
   </nav>
@@ -40,18 +33,21 @@
 import router from "../router";
 import NavBarVistaAdmin from "./NavBarVistaAdmin";
 import store from "../store";
+import NavBarVistasProfesor from "./NavBarVistasProfesor";
 
 export default {
   name: "NavBarExemplo",
-  components: { NavBarVistaAdmin },
-  computed: {
-    getCounter: function () {
-      return store.getters.getRol;
-    },
-    getRol: function () {
-      return store.getters.getRol;
-    },
-  },
+  components: {NavBarVistasProfesor, NavBarVistaAdmin},
+  computed:
+      {
+        getCounter: function(){
+          return store.getters.getRol
+        },
+        getRol:function ()
+        {
+          return store.getters.getRol
+        }
+      },
   methods: {
     cerrarSecion() {
       localStorage.clear();

@@ -152,9 +152,29 @@ export default {
               break;
           }
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        console.log(store.getters.getRol)
+        localStorage.setItem('usuario', JSON.stringify(user))
+        const rol = user.roles[0]
+        console.log('admin:'+rol)
+        switch (rol)
+        {
+          case 'administrador':
+            console.log("adminnnn")
+            this.$router.push('vistaCuentas')
+                break;
+          case 'profesor':
+            console.log("profesor")
+            this.$router.push('vistaEventoProfesor')
+            break;
+          default:
+            console.log("no adminnnn")
+            this.$router.push('/')
+                break;
+        }
+
+      }).catch( error => {
+        console.log(error)
+      })
       // revisar https://codesandbox.io/s/use-vuecookies-with-vuerouter-4-bu5y2?file=/src/main.js:93-131
       // revisar https://www.npmjs.com/package/vue3-cookies
 
