@@ -10,18 +10,16 @@
             class="form-select"
             aria-label="Default select example"
           >
-            <option value="Administrador">Admin</option>
+            <option value="Administrador">Administrador</option>
             <option value="Profesor">Profesor</option>
             <option value="Encargado">Encargado</option>
-            <option value="Encargado">Asistente</option>
+            <option value="Asistente">Asistente</option>
           </select>
         </div>
-        <div class="mb-3" v-if="tipoCuenta != 'Admin'">
-          <label class="mb-2">Tipo de cuenta</label>
-          <select class="form-select" aria-label="Default select example">
-            <option value="Admin">utalca</option>
-            <option value="profe">uchile</option>
-            <option value="encargado">uai</option>
+        <div class="mb-3" v-if="tipoCuenta != 'Administrador'">
+          <label class="mb-2">Universidad</label>
+          <select v-model="institucion" class="form-select" aria-label="Default select example">
+            <option v-for="institucionn in this.listaInstituciones" :key="institucionn.nombre" v-bind:value="institucionn.id">{{institucionn.nombre}}</option>
           </select>
         </div>
         <div class="mb-3">
@@ -62,7 +60,9 @@
       </form>
     </div>
     <div class="button-center">
-      <button type="button" class="btn btn-primary">Crear</button>
+      <button @click="validarDatos" type="button" class="btn btn-primary">Crear</button>
+      <br/>
+      <button @click="getInstituciones" type="button" class="btn btn-primary">cargar universidades</button>
     </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
       nombres:" ",
       apellidos:" ",
       email:" ",
-      contrasena:" ",
+      contrasena:"",
       tipoCuenta:" ",
       institucion:0,
       listaInstituciones:[],

@@ -17,6 +17,8 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <NavBarVistaAdmin v-if="getRol === 'administrador'"></NavBarVistaAdmin>
           <NavBarVistasProfesor v-if="getRol === 'profesor'"></NavBarVistasProfesor>
+          <NavBarVistasEncargado v-if="getRol === 'encargado'"></NavBarVistasEncargado>
+          <NavBarVistasAsistente v-if="getRol === 'asistente'"></NavBarVistasAsistente>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros"
               >Nosotros</router-link
@@ -34,10 +36,12 @@ import router from "../router";
 import NavBarVistaAdmin from "./NavBarVistaAdmin";
 import store from "../store";
 import NavBarVistasProfesor from "./NavBarVistasProfesor";
+import NavBarVistasEncargado from "./NavBarVistasEncargado";
+import NavBarVistasAsistente from "./NavBarVistasAsistente";
 
 export default {
   name: "NavBarExemplo",
-  components: {NavBarVistasProfesor, NavBarVistaAdmin},
+  components: {NavBarVistasAsistente, NavBarVistasEncargado, NavBarVistasProfesor, NavBarVistaAdmin},
   computed:
       {
         getCounter: function(){
