@@ -27,7 +27,7 @@
           <input
             class="form-control mb-3"
             type="text"
-            placeholder="RUN"
+            placeholder="Correo electrónico"
             v-model="usuario"
           />
           <input

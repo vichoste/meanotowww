@@ -66,11 +66,18 @@ form {
   border-color: rgba(255, 255, 255, 0.25);
 }
 .button-center {
-  margin-bottom: 2rem;
   text-align: center;
 }
 .button-center .btn {
   width: 10rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: white;
 }
 </style>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title text-center">Crear cuenta</h5>
+      <h5 class="card-title mb-3">Crear cuenta</h5>
       <form>
         <div class="mb-3">
           <label class="mb-2">Tipo de usuario</label>
@@ -18,8 +18,18 @@
         </div>
         <div class="mb-3" v-if="tipoCuenta != 'Administrador'">
           <label class="mb-2">Universidad</label>
-          <select v-model="institucion" class="form-select" aria-label="Default select example">
-            <option v-for="institucionn in this.listaInstituciones" :key="institucionn.nombre" v-bind:value="institucionn.id">{{institucionn.nombre}}</option>
+          <select
+            v-model="institucion"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option
+              v-for="institucionn in this.listaInstituciones"
+              :key="institucionn.nombre"
+              v-bind:value="institucionn.id"
+            >
+              {{ institucionn.nombre }}
+            </option>
           </select>
         </div>
         <div class="mb-3">
@@ -60,116 +70,129 @@
       </form>
     </div>
     <div class="button-center">
-      <button @click="validarDatos" type="button" class="btn btn-primary">Crear</button>
-      <br/>
-      <button @click="getInstituciones" type="button" class="btn btn-primary">cargar universidades</button>
+      <button @click="validarDatos" type="button" class="btn btn-primary">
+        Crear
+      </button>
+    </div>
+    <hr />
+    <div class="button-center mb-3">
+      <button @click="getInstituciones" type="button" class="btn btn-primary">
+        Carga manual universidades
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import store from "../store";
 
 export default {
   name: "FormularioCrearCuenta",
   data() {
     return {
-      run:" ",
-      nombres:" ",
-      apellidos:" ",
-      email:" ",
-      contrasena:"",
-      tipoCuenta:" ",
-      institucion:0,
-      listaInstituciones:[],
-      cargadas: false
-    }
+      run: " ",
+      nombres: " ",
+      apellidos: " ",
+      email: " ",
+      contrasena: "",
+      tipoCuenta: " ",
+      institucion: 0,
+      listaInstituciones: [],
+      cargadas: false,
+    };
   },
-  computed:{
-    getToken:function ()
-    {
-      return store.getters.getToken
-    }
+  computed: {
+    getToken: function () {
+      return store.getters.getToken;
+    },
   },
-  methods:{
-    validarDatos(){
-      const nuevaCuenta =
-          {
-            email: this.email,
-            contraseña: this.contrasena,
-            run: this.run,
-            nombre: this.nombres,
-            apellido: this.apellidos
-          }
+  methods: {
+    validarDatos() {
+      const nuevaCuenta = {
+        email: this.email,
+        contraseña: this.contrasena,
+        run: this.run,
+        nombre: this.nombres,
+        apellido: this.apellidos,
+      };
       let url;
-      switch (this.tipoCuenta)
-      {
-        case 'Administrador':
-          url='http://localhost:34592/api/autenticación/registrar/administrador'
+      switch (this.tipoCuenta) {
+        case "Administrador":
+          url =
+            "http://localhost:34592/api/autenticación/registrar/administrador";
           break;
-        case 'Profesor':
-          url='http://localhost:34592/api/autenticación/registrar/profesor/'+this.institucion
+        case "Profesor":
+          url =
+            "http://localhost:34592/api/autenticación/registrar/profesor/" +
+            this.institucion;
           break;
-        case 'Encargado':
-          url='http://localhost:34592/api/autenticación/registrar/encargado/'+this.institucion
+        case "Encargado":
+          url =
+            "http://localhost:34592/api/autenticación/registrar/encargado/" +
+            this.institucion;
           break;
-        case 'Asistente':
-          url='http://localhost:34592/api/autenticación/registrar/asistente/'+this.institucion
+        case "Asistente":
+          url =
+            "http://localhost:34592/api/autenticación/registrar/asistente/" +
+            this.institucion;
           break;
         default:
-          console.log('error de cosas')
-            url='null'
-          break
+          console.log("error de cosas");
+          url = "null";
+          break;
       }
-      if(url!== 'null')
-      {
-        this.crearCuenta(url,nuevaCuenta)
+      if (url !== "null") {
+        this.crearCuenta(url, nuevaCuenta);
       }
     },
-    crearCuenta(url,userr){
-
-      axios.post(url,userr, {
-        headers:{
-          'Authorization': `Bearer ${this.getToken}`
-        }
-      }).then(response => {
-        console.log(response.data)
-        const cosas = response.data
-        console.log(cosas)
-      }).catch( error => {
-        console.log(error)
-      })
+    crearCuenta(url, userr) {
+      axios
+        .post(url, userr, {
+          headers: {
+            Authorization: `Bearer ${this.getToken}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          const cosas = response.data;
+          console.log(cosas);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    getInstituciones(){
-      let url ='http://localhost:34592/api/institución/listar'
-      axios.get(url, {
-        headers:{
-          'Authorization': `Bearer ${this.getToken}`
-        }
-      }).then(response => {
-        this.listaInstituciones = []
-        let lista = response.data
-        console.log(response.data)
-        console.log(lista)
-        for (let i = 0; i < lista.length; i++) {
-          console.log(lista[i])
-          let institucion = {
-            id:lista[i].id,
-            nombre:lista[i].nombre
+    getInstituciones() {
+      let url = "http://localhost:34592/api/institución/listar";
+      axios
+        .get(url, {
+          headers: {
+            Authorization: `Bearer ${this.getToken}`,
+          },
+        })
+        .then((response) => {
+          this.listaInstituciones = [];
+          let lista = response.data;
+          console.log(response.data);
+          console.log(lista);
+          for (let i = 0; i < lista.length; i++) {
+            console.log(lista[i]);
+            let institucion = {
+              id: lista[i].id,
+              nombre: lista[i].nombre,
+            };
+            console.log(institucion);
+            this.listaInstituciones.push(institucion);
+            this.cargadas = true;
           }
-          console.log(institucion)
-          this.listaInstituciones.push(institucion)
-          this.cargadas= true
-        }
-      }).catch( error => {
-        console.log("jajaj error")
-        console.log(error)
-      })
-    }
-  }
-}
-
+        })
+        .catch((error) => {
+          console.log("jajaj error");
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -15,17 +15,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <NavBarVistaAdmin v-if="getRol === 'administrador'"></NavBarVistaAdmin>
-          <NavBarVistasProfesor v-if="getRol === 'profesor'"></NavBarVistasProfesor>
-          <NavBarVistasEncargado v-if="getRol === 'encargado'"></NavBarVistasEncargado>
-          <NavBarVistasAsistente v-if="getRol === 'asistente'"></NavBarVistasAsistente>
+          <NavBarVistaAdmin
+            v-if="getRol === 'administrador'"
+          ></NavBarVistaAdmin>
+          <NavBarVistasProfesor
+            v-if="getRol === 'profesor'"
+          ></NavBarVistasProfesor>
+          <NavBarVistasEncargado
+            v-if="getRol === 'encargado'"
+          ></NavBarVistasEncargado>
+          <NavBarVistasAsistente
+            v-if="getRol === 'asistente'"
+          ></NavBarVistasAsistente>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros"
               >Nosotros</router-link
             >
           </li>
         </ul>
-        <buton v-if="getRol!== 'null'" v-on:click="cerrarSecion" type="button" class="btn btn-primary">cerrar sesion</buton>
+        <buton
+          v-if="getRol !== 'null'"
+          v-on:click="cerrarSecion"
+          type="button"
+          class="btn btn-primary"
+          >Cerrar sesion</buton
+        >
       </div>
     </div>
   </nav>
@@ -41,17 +55,20 @@ import NavBarVistasAsistente from "./NavBarVistasAsistente";
 
 export default {
   name: "NavBarExemplo",
-  components: {NavBarVistasAsistente, NavBarVistasEncargado, NavBarVistasProfesor, NavBarVistaAdmin},
-  computed:
-      {
-        getCounter: function(){
-          return store.getters.getRol
-        },
-        getRol:function ()
-        {
-          return store.getters.getRol
-        }
-      },
+  components: {
+    NavBarVistasAsistente,
+    NavBarVistasEncargado,
+    NavBarVistasProfesor,
+    NavBarVistaAdmin,
+  },
+  computed: {
+    getCounter: function () {
+      return store.getters.getRol;
+    },
+    getRol: function () {
+      return store.getters.getRol;
+    },
+  },
   methods: {
     cerrarSecion() {
       localStorage.clear();
