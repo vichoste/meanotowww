@@ -86,18 +86,13 @@ export default {
       }).then(response => {
         this.listaInstituciones = []
         let lista = response.data
-        console.log(response.data)
-        console.log(lista)
         for (let i = 0; i < lista.length; i++) {
-          console.log(lista[i])
           let institucion = {
             id:lista[i].id,
             nombre:lista[i].nombre
           }
-          console.log(institucion)
           this.listaInstituciones.push(institucion)
         }
-        console.log(this.listaInstituciones)
         this.cargadas =true;
       }).catch( error => {
         console.log("jajaj error")

@@ -86,6 +86,10 @@ export default {
             console.log("adminnnn")
             this.$router.push('vistaCuentas')
                 break;
+          case 'profesor':
+            console.log("profesor")
+            this.$router.push('vistaEventoProfesor')
+            break;
           default:
             console.log("no adminnnn")
             this.$router.push('/')

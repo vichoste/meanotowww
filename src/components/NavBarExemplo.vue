@@ -8,6 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <NavBarVistaAdmin v-if="getRol === 'administrador'"></NavBarVistaAdmin>
+          <NavBarVistasProfesor v-if="getRol === 'profesor'"></NavBarVistasProfesor>
           <li class="nav-item">
             <router-link class="nav-link active" to="/nosotros">Nosotros</router-link>
           </li>
@@ -22,10 +23,11 @@
 import router from "../router";
 import NavBarVistaAdmin from "./NavBarVistaAdmin";
 import store from "../store";
+import NavBarVistasProfesor from "./NavBarVistasProfesor";
 
 export default {
   name: "NavBarExemplo",
-  components: {NavBarVistaAdmin},
+  components: {NavBarVistasProfesor, NavBarVistaAdmin},
   computed:
       {
         getCounter: function(){
