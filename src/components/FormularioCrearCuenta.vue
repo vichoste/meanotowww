@@ -33,8 +33,8 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="rut" class="form-label">RUT</label>
-          <input v-model="rut" type="text" class="form-control" id="rut" />
+          <label for="run" class="form-label">RUN</label>
+          <input v-model="run" type="text" class="form-control" id="run" />
         </div>
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombres</label>
@@ -69,15 +69,9 @@
         </div>
       </form>
     </div>
-    <div class="button-center">
+    <div class="button-center mb-5">
       <button @click="validarDatos" type="button" class="btn btn-primary">
         Crear
-      </button>
-    </div>
-    <hr />
-    <div class="button-center mb-3">
-      <button @click="getInstituciones" type="button" class="btn btn-primary">
-        Carga manual universidades
       </button>
     </div>
   </div>
@@ -107,6 +101,9 @@ export default {
       return store.getters.getToken;
     },
   },
+  mounted() {
+    this.getInstituciones();
+  },
   methods: {
     validarDatos() {
       const nuevaCuenta = {
@@ -120,21 +117,21 @@ export default {
       switch (this.tipoCuenta) {
         case "Administrador":
           url =
-            "http://localhost:34592/api/autenticación/registrar/administrador";
+            "http://localhost:34592/api/cuenta/registrar/administrador";
           break;
         case "Profesor":
           url =
-            "http://localhost:34592/api/autenticación/registrar/profesor/" +
+            "http://localhost:34592/api/cuenta/registrar/profesor/" +
             this.institucion;
           break;
         case "Encargado":
           url =
-            "http://localhost:34592/api/autenticación/registrar/encargado/" +
+            "http://localhost:34592/api/cuenta/registrar/encargado/" +
             this.institucion;
           break;
         case "Asistente":
           url =
-            "http://localhost:34592/api/autenticación/registrar/asistente/" +
+            "http://localhost:34592/api/cuenta/registrar/asistente/" +
             this.institucion;
           break;
         default:

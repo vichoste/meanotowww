@@ -1,10 +1,74 @@
 <template>
-  <h1>proximos eventos :D</h1>
+  <h1>proximos eventos</h1>
+  <table class="table table-dark table-hover">
+
+  </table>
+  <!--  <button @click="cargarCuentas">cargar cuentas</button>-->
+
+  <table class="table table-dark table-hover" v-if="cargadas">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">nombre</th>
+      <th scope="col">dueño</th>
+      <th scope="col">Accion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="(c, index) in this.listaEventos" :key="c.id">
+      <th scope="row">{{ index + 1}}</th>
+      <td>{{ c.nombre }}</td>
+      <td>{{c.dueño}}</td>
+      <td><button class="btn btn-primary">Asistir</button></td>
+    </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
+import axios from "axios";
+import store from "@/store";
+
 export default {
-  name: "VistaProximosEventos"
+  name: "VistaProximosEventos",
+  computed:{
+    getToken: function(){
+      return store.getters.getToken
+    },
+  },
+  data(){
+    return{
+      cargadas: false,
+      listaEventos:[],
+    }
+  },
+  mounted() {
+    this.cargarEventos();
+  },
+  methods:{
+    cargarEventos(){
+      this.listaEventos = [];
+      let url='http://localhost:34592/api/evento/listar'
+      axios.get(url, {
+        headers:{
+          'Authorization': `Bearer ${this.getToken}`
+        }
+      }).then(response => {
+        let lista = response.data
+        for (let i = 0; i < lista.length; i++) {
+          let evento = {
+            id: lista[i].id,
+            nombre: lista[i].nombre,
+            dueño: lista[i].dueño,
+          };
+          this.listaEventos.push(evento);
+        }
+        this.cargadas = true;
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+  }
 }
 </script>
 

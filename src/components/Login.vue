@@ -121,7 +121,7 @@ export default {
         contraseña: this.contrasena,
       };
       axios
-        .post("http://localhost:34592/api/autenticación/login", userr)
+        .post("http://localhost:34592/api/login", userr)
         .then((response) => {
           console.log(response.data);
           const cosas = response.data;
