@@ -8,8 +8,14 @@
       </div>
       <div class="mb-3">
         <label for="capacidadEvento" class="form-label">Capacidad del evento</label>
-        <input  v-model="capacidad" type="number" class="form-control" id="capacidadEvento">
+        <input  v-model="capacidad" type="number" min="1" class="form-control" id="capacidadEvento">
         <!--div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div -->
+      </div>
+      <div v-if="creado">
+        <p>Evento creado con exito!</p>
+      </div>
+      <div v-if="creacionFallida">
+        <p>Ha ocurrido un error al crear el evento!</p>
       </div>
 <!--      <div class="mb-3 form-check">
         <input v-model="repetir" type="checkbox" class="form-check-input" id="repetirCheck1">
@@ -44,8 +50,10 @@ export default {
   data()
   {
     return {
-      nombreEvento:String,
-      capacidad:Number,
+      creado:false,
+      creacionFallida:false,
+      nombreEvento:" ",
+      capacidad:1,
       fechaInicio:String,
       fechaFin:String,
       idEncargado:Number,
@@ -67,18 +75,20 @@ export default {
       this.creacion(url,nuevoEvento);
     },
     creacion(url,nuevoEvento){
+      this.creado = false;
+      this.creacionFallida = false;
       axios
       .post(url,nuevoEvento, {
         headers:{
           Authorization: `Bearer ${this.getToken}`,
         },
       })
-      .then((respuesta) => {
-        console.log(respuesta.data);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      .then(() => {
+        this.creado = true;
+      },setTimeout(5000))
+      .catch(() => {
+        this.creacionFallida = true;
+      },setTimeout(5000))
     }
   },
 }

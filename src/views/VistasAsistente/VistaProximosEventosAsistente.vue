@@ -45,6 +45,9 @@ export default {
   mounted() {
     this.cargarEventos();
   },
+  updated() {
+    console.log("Me actualice");
+  },
   methods:{
     cargarEventos(){
       this.listaEventos = [];
