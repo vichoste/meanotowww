@@ -10,7 +10,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">nombre</th>
-      <th scope="col">dueño</th>
+      <th scope="col">Capacidad</th>
       <th scope="col">Accion</th>
     </tr>
     </thead>
@@ -18,8 +18,8 @@
     <tr v-for="(c, index) in this.listaEventos" :key="c.id">
       <th scope="row">{{ index + 1}}</th>
       <td>{{ c.nombre }}</td>
-      <td>{{c.dueño}}</td>
-      <td><button class="btn btn-primary">Asistir</button></td>
+      <td>{{c.capacidad}}</td>
+      <td><button class="btn btn-primary" @click="quieroAsistir(c)">Asistir</button></td>
     </tr>
     </tbody>
   </table>
@@ -38,6 +38,7 @@ export default {
   },
   data(){
     return{
+      asistire:false,
       cargadas: false,
       listaEventos:[],
     }
@@ -59,10 +60,14 @@ export default {
       }).then(response => {
         let lista = response.data
         for (let i = 0; i < lista.length; i++) {
+          console.log(lista[i]);
           let evento = {
             id: lista[i].id,
             nombre: lista[i].nombre,
             dueño: lista[i].dueño,
+            capacidad: lista[i].capacidad,
+            fechaInicio: new Date(lista[i].inicio),
+            fechaFin: new Date(lista[i].finalización),
           };
           this.listaEventos.push(evento);
         }
@@ -70,6 +75,14 @@ export default {
       }).catch(error => {
         console.log(error);
       })
+    },
+    quieroAsistir(item){
+      if(item.capacidad > 0){
+        item.capacidad = item.capacidad-1;
+        console.log(item);
+        console.log("Capacidad -1, nueva capacidad:",item.capacidad);
+        this.asistire = true;
+      }
     }
   }
 }

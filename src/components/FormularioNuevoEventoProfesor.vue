@@ -11,6 +11,13 @@
         <input  v-model="capacidad" type="number" min="1" class="form-control" id="capacidadEvento">
         <!--div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div -->
       </div>
+      <div>
+        <label for="fechaInicio" class="form-label">Nombre del evento</label>
+        <input v-model="fechaInicio" type="date" class="form-control" id="fechaInicio">
+        <br/>
+        <label for="fechaFin" class="form-label">Nombre del evento</label>
+        <input v-model="fechaFin" type="date" class="form-control" id="fechaFin">
+      </div>
       <div v-if="creado">
         <p>Evento creado con exito!</p>
       </div>
