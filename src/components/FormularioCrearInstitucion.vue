@@ -15,15 +15,6 @@
     </button>
   </div>
   <hr />
-  <div class="button-center">
-    <button
-      type="button"
-      @click="this.cargarInstituciones"
-      class="btn btn-primary"
-    >
-      Carga manual universidades
-    </button>
-  </div>
   <table class="table table-dark table-hover" v-if="cargadas">
     <thead>
       <tr>

@@ -17,7 +17,6 @@
             <td>{{ c.nombre }}</td>
             <td>{{c.capacidad}}</td>
             <td><button class="btn btn-primary" @click=asistire(index+1)>Asistir</button></td>
-            <td><button class="btn btn-primary" @click=obtenerUnEvento(index+1)>OBTENER EVENTO</button></td>
           </tr>
         </tbody>
       </table>
@@ -41,11 +40,11 @@ export default {
     return {
       cargadas: false,
       listaEventos: [],
+      listaEstadoEventos:[],
     };
   },
   mounted() {
     this.cargarEventos();
-    this.obtenerUnEvento();
   },
   updated() {
     console.log("Me actualice");
@@ -89,22 +88,7 @@ export default {
             },
           }).then((response) => {
             console.log(response);
-            console.log("Se agrego!")
-      }).catch((error)=> {
-        console.log(error);
-      })
-    },
-    obtenerUnEvento(eventid){
-      let url = `http://localhost:34592/api/evento/${eventid}`;
-      console.log(eventid);
-      axios
-      .get(url,{
-        headers: {
-          Authorization: `Bearer ${this.getToken}`,
-        },
-      }).then((response) => {
-        console.log('obtener un evento')
-        console.log(response.data);
+            console.log("Se agrego!");
       }).catch((error)=> {
         console.log(error);
       })
