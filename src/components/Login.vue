@@ -150,6 +150,10 @@ export default {
               console.log("profesor");
               this.$router.push("vistaEventoProfesor");
               break;
+            case "asistente":
+              console.log("asistente");
+              this.$router.push("VistaProximosEventosAsistente");
+              break;
             default:
               console.log("no adminnnn");
               this.$router.push("/");

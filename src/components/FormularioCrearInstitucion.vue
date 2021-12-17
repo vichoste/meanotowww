@@ -58,6 +58,9 @@ export default {
       cargadas: false,
     };
   },
+  mounted() {
+    this.cargarInstituciones();
+  },
   methods: {
     validarInstitucion() {
       if (this.nombre !== " ") {
