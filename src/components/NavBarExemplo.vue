@@ -27,11 +27,11 @@
           <NavBarVistasAsistente
             v-if="getRol === 'asistente'"
           ></NavBarVistasAsistente>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <router-link class="nav-link active" to="/nosotros"
               >Nosotros</router-link
             >
-          </li>
+          </li>-->
         </ul>
         <buton
           v-if="getRol !== 'null'"

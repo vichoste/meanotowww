@@ -1,79 +1,69 @@
 <template>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title mb-3">Crear cuenta</h5>
-      <form>
-        <div class="mb-3">
-          <label class="mb-2">Tipo de usuario</label>
-          <select
-            v-model="tipoCuenta"
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option value="Administrador">Administrador</option>
-            <option value="Profesor">Profesor</option>
-            <option value="Encargado">Encargado</option>
-            <option value="Asistente">Asistente</option>
-          </select>
-        </div>
-        <div class="mb-3" v-if="tipoCuenta != 'Administrador'">
-          <label class="mb-2">Universidad</label>
-          <select
-            v-model="institucion"
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option
-              v-for="institucionn in this.listaInstituciones"
-              :key="institucionn.nombre"
-              v-bind:value="institucionn.id"
-            >
-              {{ institucionn.nombre }}
-            </option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="run" class="form-label">RUN</label>
-          <input v-model="run" type="text" class="form-control" id="run" />
-        </div>
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombres</label>
-          <input
-            v-model="nombres"
-            type="text"
-            class="form-control"
-            id="nombre"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="apellidos" class="form-label">Apellidos</label>
-          <input
-            v-model="apellidos"
-            type="text"
-            class="form-control"
-            id="apellidos"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo electronico</label>
-          <input v-model="email" type="email" class="form-control" id="email" />
-        </div>
-        <div class="mb-3">
-          <label for="contrasena" class="form-label">Contraseña</label>
-          <input
-            v-model="contrasena"
-            type="password"
-            class="form-control"
-            id="contrasena"
-          />
-        </div>
-      </form>
+  <form>
+    <div class="mb-3">
+      <label class="mb-2">Tipo de usuario</label>
+      <select
+        v-model="tipoCuenta"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option value="Administrador">Administrador</option>
+        <option value="Profesor">Profesor</option>
+        <option value="Encargado">Encargado</option>
+        <option value="Asistente">Asistente</option>
+      </select>
     </div>
-    <div class="button-center mb-5">
-      <button @click="validarDatos" type="button" class="btn btn-primary">
-        Crear
-      </button>
+    <div class="mb-3" v-if="tipoCuenta != 'Administrador'">
+      <label class="mb-2">Universidad</label>
+      <select
+        v-model="institucion"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option
+          v-for="institucionn in this.listaInstituciones"
+          :key="institucionn.nombre"
+          v-bind:value="institucionn.id"
+        >
+          {{ institucionn.nombre }}
+        </option>
+      </select>
     </div>
+    <div class="mb-3">
+      <label for="run" class="form-label">RUN</label>
+      <input v-model="run" type="text" class="form-control" id="run" />
+    </div>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombres</label>
+      <input v-model="nombres" type="text" class="form-control" id="nombre" />
+    </div>
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input
+        v-model="apellidos"
+        type="text"
+        class="form-control"
+        id="apellidos"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo electronico</label>
+      <input v-model="email" type="email" class="form-control" id="email" />
+    </div>
+    <div class="mb-3">
+      <label for="contrasena" class="form-label">Contraseña</label>
+      <input
+        v-model="contrasena"
+        type="password"
+        class="form-control"
+        id="contrasena"
+      />
+    </div>
+  </form>
+  <div class="button-center mb-5">
+    <button @click="validarDatos" type="button" class="btn btn-primary">
+      Crear
+    </button>
   </div>
 </template>
 
@@ -116,8 +106,7 @@ export default {
       let url;
       switch (this.tipoCuenta) {
         case "Administrador":
-          url =
-            "http://localhost:34592/api/cuenta/registrar/administrador";
+          url = "http://localhost:34592/api/cuenta/registrar/administrador";
           break;
         case "Profesor":
           url =
