@@ -7,7 +7,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">nombre</th>
-            <th scope="col">dueño</th>
+            <th scope="col">Capacidad</th>
             <th scope="col">Accion</th>
           </tr>
         </thead>
@@ -15,8 +15,9 @@
           <tr v-for="(c, index) in this.listaEventos" :key="c.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ c.nombre }}</td>
-            <td>{{ c.dueño }}</td>
-            <td><button class="btn btn-primary">Asistir</button></td>
+            <td>{{c.capacidad}}</td>
+            <td><button class="btn btn-primary" @click=asistire(index+1)>Asistir</button></td>
+            <td><button class="btn btn-primary" @click=obtenerUnEvento(index+1)>OBTENER EVENTO</button></td>
           </tr>
         </tbody>
       </table>
@@ -44,12 +45,14 @@ export default {
   },
   mounted() {
     this.cargarEventos();
+    this.obtenerUnEvento();
   },
   updated() {
     console.log("Me actualice");
   },
   methods: {
     cargarEventos() {
+      console.log(this.getToken);
       this.listaEventos = [];
       let url = "http://localhost:34592/api/evento/listar";
       axios
@@ -59,12 +62,13 @@ export default {
           },
         })
         .then((response) => {
+          console.log(response.data);
           let lista = response.data;
           for (let i = 0; i < lista.length; i++) {
             let evento = {
               id: lista[i].id,
               nombre: lista[i].nombre,
-              dueño: lista[i].dueño,
+              capacidad: lista[i].capacidad,
             };
             this.listaEventos.push(evento);
           }
@@ -73,6 +77,37 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    asistire(eventId){
+      console.log(eventId);
+      let url = `http://localhost:34592/api/evento/asistente/${eventId}/inscribir`;
+      console.log(this.getToken);
+      axios
+          .post(url,eventId,{
+            headers: {
+              Authorization: `Bearer ${this.getToken}`,
+            },
+          }).then((response) => {
+            console.log(response);
+            console.log("Se agrego!")
+      }).catch((error)=> {
+        console.log(error);
+      })
+    },
+    obtenerUnEvento(eventid){
+      let url = `http://localhost:34592/api/evento/${eventid}`;
+      console.log(eventid);
+      axios
+      .get(url,{
+        headers: {
+          Authorization: `Bearer ${this.getToken}`,
+        },
+      }).then((response) => {
+        console.log('obtener un evento')
+        console.log(response.data);
+      }).catch((error)=> {
+        console.log(error);
+      })
     },
   },
 };

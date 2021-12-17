@@ -21,11 +21,11 @@
         aria-label="Default select example"
       >
         <option
-          v-for="institucionn in this.listaInstituciones"
-          :key="institucionn.nombre"
-          v-bind:value="institucionn.id"
+          v-for="institucion in this.listaInstituciones"
+          :key="institucion.nombre"
+          v-bind:value="institucion.id"
         >
-          {{ institucionn.nombre }}
+          {{ institucion.nombre }}
         </option>
       </select>
     </div>
