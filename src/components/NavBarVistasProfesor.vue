@@ -1,18 +1,19 @@
 <template>
   <li class="nav-item">
-    <router-link class="nav-link active" to="/vistaEventoProfesor">Eventos</router-link>
+    <router-link class="nav-link active" to="/vistaEventoProfesor"
+      >Eventos</router-link
+    >
   </li>
-  <li class="nav-item">
+  <!--<li class="nav-item">
     <router-link class="nav-link active" to="/vistaModulosProfesor">Modulos</router-link>
-  </li>
+  </li>-->
 </template>
 
 <script>
 export default {
-  name: "NavBarVistasProfesor"
-}
+  name: "NavBarVistasProfesor",
+};
 </script>
 
 <style scoped>
-
 </style>

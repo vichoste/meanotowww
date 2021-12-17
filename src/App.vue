@@ -38,6 +38,11 @@ main {
     rgba(33, 37, 41, 0.75) 100%
   );
 }
+
+.table-dark {
+  --bs-table-bg: transparent;
+}
+
 .card a {
   color: slategrey;
 }

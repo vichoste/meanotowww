@@ -43,7 +43,7 @@
             value="Entrar"
             @click="logearse()"
           />
-          <a href="#">¿Olvidaste tu contraseña?</a>
+          <!-- <a href="#">¿Olvidaste tu contraseña?</a> -->
         </form>
       </div>
     </div>

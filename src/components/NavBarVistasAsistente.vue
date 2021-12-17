@@ -1,21 +1,24 @@
 <template>
   <li class="nav-item">
-    <router-link class="nav-link active" to="/vistaProximosEventosAsistente">Proximos Eventos</router-link>
+    <router-link class="nav-link active" to="/vistaProximosEventosAsistente"
+      >Proximos Eventos</router-link
+    >
   </li>
   <li class="nav-item">
-    <router-link class="nav-link active" to="/vistaEventosAsistente">Eventos</router-link>
+    <router-link class="nav-link active" to="/vistaEventosAsistente"
+      >Eventos</router-link
+    >
   </li>
-  <li class="nav-item">
+  <!--<li class="nav-item">
     <router-link class="nav-link active" to="/vistaCursosAsistente">Cursos</router-link>
-  </li>
+  </li>-->
 </template>
 
 <script>
 export default {
-  name: "NavBarVistasAsistente"
-}
+  name: "NavBarVistasAsistente",
+};
 </script>
 
 <style scoped>
-
 </style>
